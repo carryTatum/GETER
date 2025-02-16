@@ -1,4 +1,4 @@
-# GETER (ACL 2025 Anonymous code)
+# GETER
 
 
-This repository contains the source code, implementation details, and usage instructions for the GETER.
+This anonymous repository contains the source code, implementation details, and usage instructions for the GETER.
