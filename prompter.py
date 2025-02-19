@@ -16,7 +16,7 @@ def sft_sample_to_ids(conversations: Dict[str, Any], tokenizer: PreTrainedTokeni
             "Human: \n" + sentence["value"] + "\n\nAssistant: \n"
             if sentence_from == "human"
             else sentence["value"]
-        )  # https://github.com/LianjiaTech/BELLE/issues/337
+        )  
         # conversation += sentence_value
         sentence_ids = tokenizer.encode(
             sentence_value, add_special_tokens=False
@@ -55,7 +55,6 @@ def sft_sample_to_ids_2(conversations: Dict[str, Any], tokenizer: PreTrainedToke
     input_list += input_ids
     label_list += label
 
-    # 将目标输出（assistant的回答）转换为 labels
     target_output = conversations[1]["value"]
     target_ids = tokenizer.encode(target_output, add_special_tokens=False)
     input_list += target_ids + [tokenizer.eos_token_id]
