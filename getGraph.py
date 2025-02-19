@@ -39,7 +39,6 @@ def get_graph_embbding(data_path, dataset, ent_emb, rel_emb):
         idx = item['index']
         query = item['query']
         graph = item['graph']
-        #计算图的embedding
         quads_embeds = []
         head_emb = ent_emb[query[0]]
         relation_emb = rel_emb[query[1]]
