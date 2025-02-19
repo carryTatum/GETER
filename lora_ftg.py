@@ -630,7 +630,7 @@ def main():
 
     print_rank_0("Training done", log_file, global_rank)
 
-
+#GETER main
 if __name__ == "__main__":
      main()
     
