@@ -51,7 +51,7 @@ def maybe_zero_3(param, ignore_status=False, name=None):
     return param
 
 
-class FtGTrainer(Trainer):
+class GETERTrainer(Trainer):
 
     def _save_checkpoint(self, model, trial, metrics=None):
         if getattr(self.args, 'tune_mm_mlp_adapter', False):
@@ -69,7 +69,7 @@ class FtGTrainer(Trainer):
                 torch.save(weight_to_save, os.path.join(output_dir, f'mm_projector.bin'))
                 self.model.save_pretrained(output_dir, state_dict=state_dict)
         else:
-            super(FtGTrainer, self)._save_checkpoint(model, trial, metrics)
+            super(GETERTrainer, self)._save_checkpoint(model, trial, metrics)
 
     def _set_signature_columns_if_needed(self):
         if self._signature_columns is None:
