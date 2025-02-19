@@ -52,10 +52,10 @@ if __name__ == '__main__':
         }
         test.append(temp_json)
 
-    with open('./data/{0}/shuffle/train.json'.format(dataset), 'w') as f:
+    with open('./data/{0}/train.json'.format(dataset), 'w') as f:
         json.dump(train, f)
 
-    with open('./data/{0}/shuffle/test.json'.format(dataset), 'w') as f:
+    with open('./data/{0}/test.json'.format(dataset), 'w') as f:
         json.dump(test, f)
 
 
