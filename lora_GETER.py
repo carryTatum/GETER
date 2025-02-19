@@ -15,9 +15,9 @@ from transformers import (
     set_seed,
     Trainer,
 )
-from llm_arch.FtGForCausalLM import FtGForCausalLM
-from llm_arch.FtGForCausalLM_mistral import FtGForCausalLM_mistral
-from llm_arch.FtGForCausalLM_qwen import FtGForCausalLM_qwen
+from llm_arch.GETERForCausalLM import GETERForCausalLM
+from llm_arch.GETERForCausalLM_mistral import GETERForCausalLM_mistral
+from llm_arch.GETERForCausalLM_qwen import GETERForCausalLM_qwen
 from transformers.integrations.deepspeed import is_deepspeed_zero3_enabled
 from deepspeed import zero
 from deepspeed.runtime.zero.partition_parameters import ZeroParamStatus
@@ -43,7 +43,7 @@ from peft import (
     get_peft_model
 )
 from transformers.utils import add_start_docstrings
-from ftg_trainer import FtGTrainer
+from GETER_trainer import GETERTrainer
 
 
 # Borrowed from peft.utils.get_peft_model_state_dict
@@ -364,7 +364,7 @@ def main():
             config.pad_token_id = tokenizer.pad_token_id
             config.unk_token_id = tokenizer.unk_token_id
             config._flash_attn_2_enabled = model_args.use_flash_attention
-            model = FtGForCausalLM.from_pretrained(
+            model = GETERForCausalLM.from_pretrained(
                 model_args.model_name_or_path,
                 config=config,
                 torch_dtype=torch_dtype,
@@ -380,7 +380,7 @@ def main():
             config.pad_token_id = tokenizer.pad_token_id
             config.unk_token_id = tokenizer.unk_token_id
             config._flash_attn_2_enabled = model_args.use_flash_attention
-            model = FtGForCausalLM_mistral.from_pretrained(
+            model = GETERForCausalLM_mistral.from_pretrained(
                 model_args.model_name_or_path,
                 config=config,
                 torch_dtype=torch_dtype,
@@ -390,7 +390,7 @@ def main():
             model.resize_token_embeddings(len(tokenizer), pad_to_multiple_of=8)
         elif model_args.model_type == "qwen":
             config = AutoConfig.from_pretrained(model_args.model_name_or_path)
-            model = FtGForCausalLM_qwen.from_pretrained(
+            model = GETERForCausalLM_qwen.from_pretrained(
                 model_args.model_name_or_path,
                 config=config,
                 torch_dtype=torch_dtype,
@@ -563,7 +563,7 @@ def main():
         global_rank,
     )
 
-    trainer = FtGTrainer(
+    trainer = GETERTrainer(
         model=model,
         tokenizer=tokenizer,
         args=training_args,
