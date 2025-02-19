@@ -13,23 +13,23 @@ from typing import Optional, Tuple, Union, List
 from torch.nn import CrossEntropyLoss
 
 
-class FtGConfig(LlamaConfig):
-    model_type = 'ftg'
+class GETERConfig(LlamaConfig):
+    model_type = 'GETER'
 
 
-class FtGLlamaModel(RankLLamaMeta, LlamaModel):
-    config_class = FtGConfig
+class GETERLlamaModel(RankLLamaMeta, LlamaModel):
+    config_class = GETERConfig
 
     def __init__(self, config: LlamaConfig):
-        super(FtGLlamaModel, self).__init__(config)
+        super(GETERLlamaModel, self).__init__(config)
 
 
-class FtGForCausalLM(LlamaForCausalLM, RankMetaForCausalLLM):
-    config_class = FtGConfig
+class GETERForCausalLM(LlamaForCausalLM, RankMetaForCausalLLM):
+    config_class = GETERConfig
 
     def __init__(self, config):
         super(LlamaForCausalLM, self).__init__(config)
-        self.model = FtGLlamaModel(config)
+        self.model = GETERLlamaModel(config)
         self.lm_head = nn.Linear(config.hidden_size, config.vocab_size, bias=False)
         self.post_init()
 
@@ -132,5 +132,5 @@ class FtGForCausalLM(LlamaForCausalLM, RankMetaForCausalLLM):
         )
         return model_inputs
     
-AutoConfig.register("ftg", FtGConfig)
-AutoModelForCausalLM.register(FtGConfig, FtGForCausalLM)
+AutoConfig.register("GETER", GETERConfig)
+AutoModelForCausalLM.register(GETERConfig, GETERForCausalLM)
