@@ -1,4 +1,4 @@
-# <center> Towards Explainable Temporal Reasoning in Large Language Models: AStructure-Aware Generative Framework </center>
+# <center> Towards Explainable Temporal Reasoning in Large Language Models: A Structure-Aware Generative Framework </center>
 
 #### <center> Anonymous ACL submission </center>
 
