@@ -13,23 +13,23 @@ from typing import Optional, Tuple, Union, List
 from torch.nn import CrossEntropyLoss
 
 
-class FtGConfig(MistralConfig):
-    model_type = 'ftg'
+class GETERConfig(MistralConfig):
+    model_type = 'GETER'
 
 
-class FtGMistralModel(RankMistralMeta, MistralModel):
-    config_class = FtGConfig
+class GETERMistralModel(RankMistralMeta, MistralModel):
+    config_class = GETERConfig
 
     def __init__(self, config: MistralConfig):
-        super(FtGMistralModel, self).__init__(config)
+        super(GETERMistralModel, self).__init__(config)
 
 
-class FtGForCausalLM_mistral(MistralForCausalLM, RankMetaForCausalLLM):
-    config_class = FtGConfig
+class GETERForCausalLM_mistral(MistralForCausalLM, RankMetaForCausalLLM):
+    config_class = GETERConfig
 
     def __init__(self, config):
         super(MistralForCausalLM, self).__init__(config)
-        self.model = FtGMistralModel(config)
+        self.model = GETERMistralModel(config)
         self.lm_head = nn.Linear(config.hidden_size, config.vocab_size, bias=False)
         self.post_init()
 
@@ -133,5 +133,5 @@ class FtGForCausalLM_mistral(MistralForCausalLM, RankMetaForCausalLLM):
         return model_inputs
 
 
-AutoConfig.register("ftg", FtGConfig)
-AutoModelForCausalLM.register(FtGConfig, FtGForCausalLM_mistral)
+AutoConfig.register("GETER", GETERConfig)
+AutoModelForCausalLM.register(GETERConfig, GETERForCausalLM_mistral)
