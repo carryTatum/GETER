@@ -17,7 +17,7 @@ To prepare the data, start by using a temporal encoder to generate embeddings fo
 
 ## Step 3: Training 
 ```sh
-torchrun --nproc_per_node 2 --master_port 29500 lora_ftg.py \
+torchrun --nproc_per_node 2 --master_port 29500 lora_GETER.py \
     --ddp_timeout 180000000 \
     --model_name_or_path ${model_name_or_path} \
     --model_type ${llama/mistral/qwen}\
