@@ -219,35 +219,6 @@ def batch_grouped_pretrain_generate(
     ]
     return {"input_ids": result, "labels": result.copy()}
 
-
-def exam_generate(model_max_length: int, tokenizer: PreTrainedTokenizer, data_point):
-    template = "Human: \n{human}\n\nAssistant: \n"
-    input_str = template.format(
-        human=f'回答下面的{data_point["type"]}题，用json返回答案，包括原因和答案，如{{"reason":..., "answer":...}}\n{data_point["question"]}\n选项：{" ".join(data_point["candidates"])}'
-    )
-    input_ids = tokenizer.encode(input_str, add_special_tokens=False)
-    labels = [IGNORE_INDEX] * len(input_ids)
-    bot_ids = tokenizer.encode(
-        json.dumps(
-            {"reason": data_point["reason"], "answer": data_point["answer"]},
-            ensure_ascii=False,
-        ),
-        add_special_tokens=False,
-    )
-    input_ids += bot_ids
-    labels += bot_ids
-
-    input_ids += [tokenizer.eos_token_id]
-    labels += [tokenizer.eos_token_id]
-
-    input_ids = input_ids[: model_max_length - 1]
-    labels = labels[: model_max_length - 1]
-    return {
-        "input_ids": input_ids,
-        "attention_mask": [1] * len(input_ids),
-        "labels": labels,
-    }
-
 def inference_generate(
     model_max_length: int,
     tokenizer: PreTrainedTokenizer,
