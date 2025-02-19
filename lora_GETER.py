@@ -112,11 +112,6 @@ class ModelArguments:
         default="llama",
         metadata={"help": "Model type to use. Options are 'llama', 'mistral', 'qwen'"}
     )
-
-    # llama: bool = field(default=True, metadata={"help": "Whether to use llama"})
-    # mistral: bool = field(default=False, metadata={"help": "Whether to use mistral"})
-    # qwen: bool = field(default=False, metadata={"help": "Whether to use qwen"})
-
     pretrain_mm_mlp_adapter: Optional[str] = field(
         default=None,
         metadata={"help": "Path to pretrain mm mlp adapter"}
@@ -213,10 +208,6 @@ class TrainingArguments(TrainingArguments):
         default="none",
         metadata={"help": "lora bias"}
     )
-    # remove_unused_columns: bool = field(
-    #     default=False,
-    #     metadata={"help": "Whether to remove unused columns"}
-    # )
 
 def print_rank_0(msg, log_file, rank=0):
     if rank <= 0:
