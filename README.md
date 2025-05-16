@@ -1,6 +1,13 @@
-# <center> Towards Explainable Temporal Reasoning in Large Language Models: A Structure-Aware Generative Framework </center>
+<div align="center">
 
-#### <center> Anonymous ACL submission </center>
+# GETER
+
+Official code repository 🗂️ for *ACL 2025 Findings* paper  
+**"Towards Explainable Temporal Reasoning in Large Language Models: A Structure-Aware Generative Framework"**.
+
+![image](https://github.com/user-attachments/assets/087a9702-cb87-491f-be16-c7284b09a055)
+
+</div>
 
 ## Step 1: Environment Preparation
 ```sh
