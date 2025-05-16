@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 ```
 ## Step 2: Data Preparation
-To prepare the data, start by using a temporal encoder to generate embeddings for entities and relations (we used the RE-GCN model for this purpose). Next, run the script `./get_Graph.py` to obtain the graph embeddings. Finally, execute `./convert_instruction.py` to construct the training and validation instruction datasets.
+To prepare the data, start by using a temporal encoder to generate embeddings for entities and relations (we used the RE-GCN model for this purpose). Next, run the script `./get_Graph.py` to obtain the graph embeddings. Finally, execute `./convert_instruction.py` to construct the training and validation instruction datasets. For assistance with generating embeddings for entities and relations, refer to this resource: https://github.com/LiaoMengqi/KGMH.
 
 
 ## Step 3: Training 
