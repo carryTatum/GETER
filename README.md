@@ -2,7 +2,7 @@
 
 # GETER
 
-Official code repository 🗂️ for *ACL 2025 Findings* paper  
+Official code repository 🗂️ for *ACL 2025 Findings* paper 🔥🔥🔥 
 **"Towards Explainable Temporal Reasoning in Large Language Models: A Structure-Aware Generative Framework"**.
 
 ![image](https://github.com/user-attachments/assets/087a9702-cb87-491f-be16-c7284b09a055)
@@ -54,7 +54,7 @@ torchrun --nproc_per_node 2 --master_port 29500 lora_GETER.py \
     --gradient_checkpointing \
     --output_dir ${output_dir}
 ```
-## Step 4: evaluate 
+## 🚀Step 4: evaluate 
 
 ```sh
 python infer.py \
