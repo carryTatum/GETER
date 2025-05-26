@@ -9,7 +9,7 @@ Official code repository 🗂️ for *ACL 2025 Findings* paper
 
 </div>
 
-## Step 1: Environment Preparation
+## 📦Step 1: Environment Preparation
 ```sh
 conda create -n geter python=3.10
 conda activate geter
@@ -18,11 +18,11 @@ conda activate geter
 pip install -r requirements.txt
 
 ```
-## Step 2: Data Preparation
-To prepare the data, start by using a temporal encoder to generate embeddings for entities and relations (we used the RE-GCN model for this purpose). Next, run the script `./get_Graph.py` to obtain the graph embeddings. Finally, execute `./convert_instruction.py` to construct the training and validation instruction datasets. For assistance with generating embeddings for entities and relations, refer to this resource: https://github.com/LiaoMengqi/KGMH.
+## 📊Step 2: Data Preparation
+To prepare the data, start by using a temporal encoder to generate embeddings for entities and relations (we used the RE-GCN model for this purpose). Next, run the script `./get_Graph.py` to obtain the graph embeddings. Finally, execute `./convert_instruction.py` to construct the training and validation instruction datasets. For assistance with generating embeddings for entities and relations, refer to this resource [KGMH](https://github.com/LiaoMengqi/KGMH).
 
 
-## Step 3: Training 
+## 🛠️Step 3: Training 
 ```sh
 torchrun --nproc_per_node 2 --master_port 29500 lora_GETER.py \
     --ddp_timeout 180000000 \
@@ -54,3 +54,31 @@ torchrun --nproc_per_node 2 --master_port 29500 lora_GETER.py \
     --gradient_checkpointing \
     --output_dir ${output_dir}
 ```
+## Step 4: evaluate 
+
+```sh
+python infer.py \
+    --ckpt_path ${ckpt_path} \                           # Path to main model weights
+    --lora_path ${lora_path} \                           # Path to LoRA fine-tuned weights
+    --use_lora \                                         
+    --infer_file ${infer_file} \                         # Input JSON file for inference 
+    --graph_emb_file ${graph_emb_file} \                 # Graph embedding file in .pt format 
+    --output_file ${output_file} \                       # Output path for inference results 
+    --model_name ${model_name} \                         # Model type: mistral, llama, or qwen
+    --max_new_tokens 1024                              
+```
+## Acknowledge
+Some code implementations are built upon [KGMH](https://github.com/LiaoMengqi/KGMH). We sincerely appreciate the efforts for their contributions.
+
+<!-- ## 📜 Citation
+
+Please cite our paper if you use our code:
+
+```
+@article{jiang2025towards,
+  title={Towards Explainable Temporal Reasoning in Large Language Models: A Structure-Aware Generative Framework},
+  author={Jiang, Zihao and Liu, Ben and Peng, Miao and Xu, Wenjie and Xiao, Yao and Shan, Zhenyan and Peng, Min},
+  journal={arXiv preprint arXiv:2505.15245},
+  year={2025}
+}
+``` -->
