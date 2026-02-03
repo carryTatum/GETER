@@ -70,7 +70,7 @@ python infer.py \
 ## Acknowledge
 Some code implementations are built upon [KGMH](https://github.com/LiaoMengqi/KGMH). We sincerely appreciate the efforts for their contributions.
 
-<!-- ## 📜 Citation
+## 📜 Citation
 
 Please cite our paper if you use our code:
 
@@ -81,4 +81,4 @@ Please cite our paper if you use our code:
   journal={arXiv preprint arXiv:2505.15245},
   year={2025}
 }
-``` -->
+``` 
