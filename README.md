@@ -5,6 +5,20 @@
 Official code repository 🗂️ for *ACL 2025 Findings* paper 🔥🔥🔥 
 **"Towards Explainable Temporal Reasoning in Large Language Models: A Structure-Aware Generative Framework"**.
 
+<div align="center">
+   <p>
+   <a href='https://arxiv.org/abs/2505.15245'>
+      <img src='https://img.shields.io/badge/arXiv-2505.15245-b31b1b'>
+   </a>
+   <a href='https://aclanthology.org/2025.findings-acl.378/'>
+      <img src='https://img.shields.io/badge/ACL%20Anthology-Paper-blue'>
+   </a>
+   <a href='https://github.com/carryTatum/GETER/'>
+      <img src='https://img.shields.io/badge/GitHub-GETER-green'>
+   </a>
+   </p>
+</div>
+
 ![image](https://github.com/user-attachments/assets/087a9702-cb87-491f-be16-c7284b09a055)
 
 </div>
